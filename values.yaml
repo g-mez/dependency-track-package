@@ -1,0 +1,42 @@
+dependency-track:
+  enabled: true
+  ingress:
+    enabled: false   # disable for local testing
+  apiServer:
+    extraEnv:
+      - name: ALPINE_DATABASE_MODE
+        value: "external"
+      - name: ALPINE_DATABASE_DRIVER
+        value: "org.postgresql.Driver"
+      - name: ALPINE_DATABASE_USERNAME
+        value: "dtrack"
+      - name: ALPINE_DATABASE_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: dtrack-postgresql
+            key: password
+      - name: ALPINE_DATABASE_URL
+        value: "jdbc:postgresql://dtrack-postgresql:5432/dtrack"
+
+postgresql:
+  enabled: true
+  image:
+    repository: postgres
+    tag: "12"
+  auth:
+    username: dtrack
+    password: dtrack
+    database: dtrack
+  primary:
+    persistence:
+      enabled: false # disable for local testing
+    extraVolumes:
+      - name: pgdata
+        emptyDir: {}
+      - name: run-dir
+        emptyDir: {}
+    extraVolumeMounts:
+      - name: pgdata
+        mountPath: /var/lib/postgresql/data
+      - name: run-dir
+        mountPath: /var/run/postgresql

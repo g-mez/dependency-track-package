@@ -1,0 +1,18 @@
+apiVersion: v2
+name: dependency-track-package
+description: A wrapper Helm chart for Dependency-Track and PostgreSQL
+type: application
+version: 0.1.0
+appVersion: "0.39.0"
+
+dependencies:
+  - name: postgresql
+    version: "16.4.2"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+
+  - name: dependency-track
+    version: "0.39.0"
+    repository: "https://dependencytrack.github.io/helm-charts"
+    condition: dependency-track.enabled
+
