@@ -21,8 +21,15 @@ dependency-track:
 postgresql:
   enabled: true
   image:
-    repository: postgres
-    tag: "12"
+    registry: registry1.dso.mil
+    repository: ironbank/bitnami/postgres
+    tag: "17.4.0"
+  global:  
+    security:
+      # -- Allow registry1.dso.mil in lieu of the default bitnami registry
+      allowInsecureImages: true
+    imagePullSecrets:
+      - name: registry1-pull
   auth:
     username: dtrack
     password: dtrack

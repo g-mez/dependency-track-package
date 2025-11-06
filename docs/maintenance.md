@@ -19,7 +19,7 @@ dependencies:
 
 2. Run the helm dependency update command from the root directory
 ```
-helm dependency update .
+helm dependency update ./chart
 ```
 
-3. Validate that new chart tarballs get created in the ./charts directory
+3. Validate that new chart tarballs get created in the ./chart/charts directory

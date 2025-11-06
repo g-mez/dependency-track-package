@@ -7,8 +7,8 @@ appVersion: "0.39.0"
 
 dependencies:
   - name: postgresql
-    version: "16.4.2"
-    repository: "https://charts.bitnami.com/bitnami"
+    version: "16.7.19"
+    repository: "oci://registry-1.docker.io/bitnamicharts"
     condition: postgresql.enabled
 
   - name: dependency-track
