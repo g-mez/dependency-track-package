@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.4.2
+- name: dependency-track
+  repository: https://dependencytrack.github.io/helm-charts
+  version: 0.39.0
+digest: sha256:6ff90fc14d38ae13526d674afb9aa842c5126e4179d09551eaf6d001851e9aa8
+generated: "2025-11-06T08:20:57.16544635-05:00"

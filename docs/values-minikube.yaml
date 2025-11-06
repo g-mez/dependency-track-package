@@ -1,0 +1,26 @@
+dependency-track:
+  apiServer:
+    resources:
+      requests:
+        cpu: "2"
+        memory: "2Gi"
+      limits:
+        cpu: "3"
+        memory: "2Gi"
+    # persistentVolume:
+    #   enabled: true
+    #   className: "standard"
+    service:
+      type: NodePort
+      nodePort: 30080
+    # extraEnv:
+    #   - name: EXTRA_JAVA_OPTIONS
+    #     value: "-Xmx2g"
+    #   - name: SYSTEM_REQUIREMENT_CHECK_ENABLED
+    #     value: "false"
+
+  frontend:
+    service:
+      type: NodePort
+      nodePort: 30081
+    apiBaseUrl: "http://localhost:30080"
